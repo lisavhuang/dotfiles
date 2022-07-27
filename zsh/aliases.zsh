@@ -6,7 +6,6 @@ alias dotfiles="cd $HOME/.dotfiles"
 # macOS
 alias finder="open -a Finder"
 alias safari="open -a Safari"
-alias typora="open -a Typora"
 alias preview="open -a Preview"
 
 # Zsh
@@ -20,15 +19,12 @@ alias zshpaths="vi ~/.dotfiles/zsh/paths.zsh"
 
 # Terminal
 alias alacrittyconf="vi ~/.dotfiles/alacritty/alacritty.yml"
-alias kittyconf="vi ~/.dotfiles/kitty/kitty.conf"
-alias kittycolors="vi ~/.dotfiles/kitty/colors.conf"
 
 # tmux
 alias tmuxconf="vi ~/.tmux.conf.local"
 
 # Editor
 alias vi="nvim"
-alias vim="nvim"
 alias nvimconf="vi ~/.dotfiles/nvim/init.vim"
 alias nvimplugins="vi ~/.dotfiles/nvim/plugins.vim"
 alias nvimmappings="vi ~/.dotfiles/nvim/mappings.vim"
