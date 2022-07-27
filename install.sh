@@ -29,7 +29,7 @@ function brew_install() {
     fi
 }
 
-function install_nvim() {
+function install_plain_nvim() {
     brew_install "nvim"
     # Link configuration.
     rm -rf "$HOME/.config/nvim"
@@ -56,10 +56,14 @@ function install_astronvim(){
     # Install neovim
     brew_install "nvim"
     # Install NerdFont
-    brew tap homebrew/cask-fonts &&\nbrew install --cask font-hasklug-nerd-font
+    brew tap homebrew/cask-fonts && brew install --cask font-hasklug-nerd-font
     # clone AstroNvim
+    if [ -d "$HOME/.config/nvim" ]; then
+        mv "$HOME/.config/nvim" "$HOME/.config/nvim.old"
+    fi
     git clone https://github.com/AstroNvim/AstroNvim "$HOME/.config/nvim"
     # Link astronvim configuration.
+    mkdir "$HOME/.config/nvim/lua/user"
     ln -sf "$HOME/.dotfiles/astronvim/init.lua" "$HOME/.config/nvim/lua/user/init.lua"
     nvim +PackerSync
 }
@@ -70,12 +74,12 @@ function install_alacritty() {
     ln -sf "$HOME/.dotfiles/alacritty" "$HOME/.config/."
 }
 if [[ $# -lt 1 ]]; then
-    echo "usage: $0 --[all, zsh, nvim, tmux, astronvim, alacritty]"
-    echo "astronvim is a neovim config"
+    echo "usage: $0 --[all, zsh, plain_nvim, tmux, astronvim, yabai, alacritty]"
+    echo "--all = zsh, tmux, astronvim, alacritty"
 fi
 
 zsh=false
-nvim=false
+plain_nvim=false
 yabai=false
 tmux=false
 astronvim=false
@@ -86,7 +90,7 @@ for i in "$@"; do
         -z|--zsh)
             zsh=true
             ;;
-        -n|--nvim)
+        -n|--plain_nvim)
             nvim=true
             ;;
         -y|--yabai)
@@ -103,7 +107,6 @@ for i in "$@"; do
             ;;
         -a|--all)
             zsh=true
-            yabai=true
             tmux=true
             astronvim=true
             alacritty=true
@@ -117,7 +120,7 @@ if $zsh; then
 fi
 
 if $nvim; then
-    install_nvim
+    install_plain_nvim
 fi
 
 if $yabai; then
