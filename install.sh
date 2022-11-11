@@ -33,7 +33,6 @@ function install_plain_nvim() {
     brew_install "nvim"
     # Link configuration.
     rm -rf "$HOME/.config/nvim"
-    ln -sf "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 
     # Install plugins.
     nvim +PlugInstall +qall

@@ -204,7 +204,11 @@ local config = {
       },
     },
     ["nvim-lsp-installer"] = {
-      ensure_installed = { "sumneko_lua" },
+      ensure_installed = {
+        "sumneko_lua",
+        "pyright",
+        "gopls"
+      },
     },
     packer = {
       compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
@@ -369,16 +373,6 @@ local config = {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "cpp",
       command = "setl commentstring=//\\ %s",
-    })
-
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "lilypond",
-      command = "setl commentstring=%\\ %s",
-    })
-
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "lilypond",
-      command = "setl noexpandtab",
     })
 
     -- Set up custom filetypes
