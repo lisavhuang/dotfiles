@@ -155,6 +155,7 @@ local config = {
       { "euugenechou/gruvbox-material" },
       { "itchyny/lightline.vim" },
       { "fatih/vim-go" },
+      { "Glench/Vim-Jinja2-Syntax" },
       { "rust-lang/rust.vim" },
       { "tpope/vim-abolish" },
       { "tpope/vim-commentary" },
@@ -194,10 +195,12 @@ local config = {
       ensure_installed = {
         "c",
         "cpp",
+        "go",
         "python",
         "rust",
         "latex",
-        "lua"
+        "lua",
+        "yaml"
       },
     },
     ["nvim-lsp-installer"] = {
